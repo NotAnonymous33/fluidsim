@@ -176,7 +176,8 @@ while running:
             d = fluid.density[i, j]
             # Only draw if there's significant density
             if d > 0.1:  # Threshold to avoid drawing very faint pixels
-                red = min(255, int(d))
+                print(d * 255)
+                red = min(255, int(d * 255))
                 pygame.draw.rect(screen, (red, 0, 0),  # Pure red
                                (x, y, SCALE, SCALE))
     

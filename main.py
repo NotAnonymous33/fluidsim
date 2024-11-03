@@ -7,8 +7,6 @@ clock = pygame.time.Clock()
 running = True
 
 
-x = -100
-speed = 300
 fps = 200
 N = 20
 size = (N+2) * (N+2)
@@ -26,6 +24,10 @@ def IX(x, y):
 
 h = 1.0 / N
 
+def add_source(N, x, s, dt):
+    for i in range(size):
+        x[i] += dt * s[i]
+
 
 while running:
     # poll for events
@@ -36,13 +38,16 @@ while running:
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
+    for y in range(N+2):
+        for x in range(N+2):
+            pygame.draw.circle(screen, "white", IX(x, y), 1)
 
     # RENDER YOUR GAME HERE
     # draw a circle
-    pygame.draw.circle(screen, "red", (x, 360), 100)
-    x += speed / fps
-    if x > 820:
-        x = -100
+    for i in range(size):
+        u_prev[i] = u[i]
+        v_prev[i] = v[i]
+        dens_prev[i] = dens[i]
     
     
     # flip() the display to put your work on screen
