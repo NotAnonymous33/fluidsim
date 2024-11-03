@@ -10,6 +10,23 @@ running = True
 x = -100
 speed = 300
 fps = 200
+N = 20
+size = (N+2) * (N+2)
+
+u = [0 for _ in range(size)]
+v = [0 for _ in range(size)]
+u_prev = [0 for _ in range(size)]
+v_prev = [0 for _ in range(size)]
+
+dens = [0 for _ in range(size)]
+dens_prev = [0 for _ in range(size)]
+
+def IX(x, y):
+    return x + (N+2) * y
+
+h = 1.0 / N
+
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
